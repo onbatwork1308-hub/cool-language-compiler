@@ -1,4 +1,6 @@
 #include "utils.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 bool isDigit(char c) {
     int i = c - '0';

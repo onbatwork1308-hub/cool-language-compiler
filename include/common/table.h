@@ -2,6 +2,7 @@
 #define TABLE_H
 
 #include "utils.h"
+#include <stddef.h>
 
 /**
  * @struct Entry

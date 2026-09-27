@@ -1,0 +1,68 @@
+# Object files
+*.o
+*.obj
+*.lo
+*.slo
+
+# Precompiled headers
+*.gch
+*.pch
+
+# Compiled binaries / executables
+*.out
+*.exe
+*.a
+*.la
+*.so
+*.so.*
+*.dylib
+*.dll
+
+# Debug symbols
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Build directories
+build/
+bin/
+obj/
+cmake-build-*/
+
+# CMake artifacts (if you switch to CMake later)
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile.in
+
+# Autotools artifacts (if relevant later)
+autom4te.cache/
+config.log
+config.status
+
+# flex/bison generated files (since lexer.l/parser.y were floated as options)
+lex.yy.c
+y.tab.c
+y.tab.h
+*.output
+
+# Test artifacts
+*.gcov
+*.gcda
+*.gcno
+tests/**/*.actual
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
