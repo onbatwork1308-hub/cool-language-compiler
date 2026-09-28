@@ -12,7 +12,6 @@ Pipeline: `source (.cl) → Lexer → Parser → Semantic Analysis → IR → Op
 - [ ] IR
 - [ ] Optimizer
 - [ ] Code generation
-- [ ] Automated test harness
 
 ## Features
 
