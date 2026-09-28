@@ -54,44 +54,69 @@ no lexical errors were found, `1` otherwise.
 ```text
 cool-language-compiler/
 │
-├── 📁 include/
-│   └── 📁 frontend/
-│       └── 📁 lexer/
-│           ├── Lexer.h
-│           ├── Token.h
-│           ├── Keywords.h
-│           └── Symbols.h
-│
-├── 📁 src/
-│   ├── 📁 frontend/
-│   │   └── 📁 lexer/
-│   │       ├── lexer.c
-│   │       ├── token.c
-│   │       ├── keywords.c
-│   │       └── symbols.c
-│   │
-│   └── main.c
-│
-├── 📁 tests/
-│   ├── inputs
-│   │   └──lexer
-│   │      └── test_lexer.cl
-│   └── expected
-│
-├── 📁 docs/
-│   └── lexer
-│
-├── Makefile
+├── build
+│   └── lexer
+├── compile.sh
+├── docs
+│   ├── interntables.pdf
+│   ├── lexer_token_keyword.pdf
+│   └── tables.pdf
+├── include
+│   ├── backend
+│   ├── common
+│   │   ├── internTables.h
+│   │   ├── table.h
+│   │   └── utils.h
+│   ├── frontend
+│   │   ├── lexer
+│   │   │   ├── keyword.h
+│   │   │   ├── lexer.h
+│   │   │   ├── token.h
+│   │   │   └── tokenlist.h
+│   │   ├── parser
+│   │   └── semant
+│   └── ir
+├── MAKEFILE
+├── output
 ├── README.md
-└── .gitignore
+├── src
+│   ├── backend
+│   │   ├── codegen
+│   │   └── optimizer
+│   ├── common
+│   │   ├── internTables.c
+│   │   ├── table.c
+│   │   └── utils.c
+│   ├── frontend
+│   │   ├── lexer
+│   │   │   ├── keyword.c
+│   │   │   ├── lexer.c
+│   │   │   ├── token.c
+│   │   │   └── tokenlist.c
+│   │   ├── parser
+│   │   └── semant
+│   ├── ir
+│   └── main.c
+└── tests
+    ├── backend
+    ├── common
+    └── frontend
+        ├── lexer
+        │   ├── expected
+        │   └── inputs
+        │       └── test_lexer.cl
+        ├── parser
+        └── semant
+
 ```
 
 ## Documentation
 
 Design rationale for each phase lives in `docs/`, one document (or set) per phase, added as that
 phase is built. This README stays a short index — build/usage instructions and a feature/status
-summary — rather than growing with every phase; see `docs/` for depth.
+summary, see `docs/` for depth.
 
 ## Author
 onbatwork1308-hub
+
 From-scratch compiler project, built one phase at a time.
