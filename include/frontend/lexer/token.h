@@ -42,5 +42,12 @@ typedef struct Token {
     char* lexeme;   
     LexErrorKind error_kind;
 } Token;
+
+/**
+ * @brief maps the given token type with appropriate string.
+ * used for debugging and diagonstics of the lexer's o/p.
+ * @param type TokenType of the token.
+ * @returns string mapped with that type.
+ */
 const char *token_type_name(TokenType type);
 #endif

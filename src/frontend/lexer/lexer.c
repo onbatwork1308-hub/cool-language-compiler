@@ -9,6 +9,13 @@
 
 #define MAX_STR_CONST 1024
 
+/**
+ * @struct Scanner
+ * @details a abstract interface used by lexer to scan the
+ * input buffer. It provides various functionality to lexer
+ * like lookahead, read maximal munch, scan strings and ski
+ * -p comments, etc.
+ */
 typedef struct Scanner {
     const char *buffer;
     size_t size;
@@ -16,24 +23,61 @@ typedef struct Scanner {
     size_t line;
 } Scanner;
 
+/**
+ * @brief helper function used to make tokens.
+ * @param type TokenType of the token to be made.
+ * @param value Entry* if token is keyword or id
+ * -entifier, then it the pointer to it's entry i
+ * -n interntables, otherwise NULL
+ * @param line line no. in the source file from w
+ * -here this token was built
+ * @returns Token
+ */
 static Token make_token(TokenType type, Entry* value, int line, char *lexeme) {
     Token tok = {.type = type, .value = value, .line = line, .lexeme = lexeme, .error_kind = LEX_ERR_NONE };
     return tok;
 }
 
+/**
+ * @brief helper function to make error tokens
+ * @param line line no. form source file where this token 
+ * was built.
+ * @param lexeme source code's copy which caused the error, 
+ * used for later debuging.
+ * @param error_kind specifies the exact type of error which 
+ * has been detected by the 
+ * scanner/lexer.
+ * @returns Token with default TokenType : TOKEN_ERROR
+ */
 static Token make_error_token(int line, char *lexeme, LexErrorKind error_kind) {
     Token tok = {.type = TOKEN_ERROR, .value = NULL, .line = line, .lexeme = lexeme, .error_kind = error_kind };
     return tok;
 }
 
+/**
+ * @struct StrBuf
+ * @details string buffer which grows as the input start 
+ * becoming large.
+ */
 typedef struct { char* buf; int len; int cap; } StrBuf;
 
+/**
+ * @brief initializes object of StrBuf
+ * @param b StrBuf* pointer to the object of StrBuf type, 
+ * which is to be initialized.
+ */
 static void strbuf_init(StrBuf *b) {
     b->cap = 32; b->len = 0;
     b->buf = (char*) malloc(b->cap);
     b->buf[0] = '\0';
 }
 
+/**
+ * @brief append the character to the StrBuf.
+ * @param b pointer to StrBuf in which the chara
+ * -cter is to be appended.
+ * @param c character which is to be appended.
+ */
 static void strbuf_push(StrBuf *b, char c) {
     if(b->len >= b->cap) {
         b->cap = b->cap * 2;
@@ -44,21 +88,48 @@ static void strbuf_push(StrBuf *b, char c) {
     b->buf[b->len] = '\0';
 }
 
+/**
+ * @brief destroyer of StrBuf objects in case of errors
+ * @param b pointer to the StrBuf which is to be destro
+ * -yed.
+ * @param line line no. of source file at which this err
+ * -or was detected by the scanner.
+ * @param kind error kind of the detected error.
+ * @returns Token with default TokenType TOKEN_ERROR.
+ */
 static Token strbuf_error(StrBuf *b, int line, LexErrorKind kind) {
     Token err = make_error_token(line, strdup(b->buf), kind);
     free(b->buf);
     return err;
 }
 
-
+/**
+ * @brief helper function of scanner
+ * @param s pointer to the Scanner object.
+ * @returns character currently pointed by the scanner
+ * pointer pos if file is not ended, otherwise '\0'
+ */
 static char peek(Scanner *s) {
     return (s->pos < s->size) ? s->buffer[s->pos] : '\0';
 }
 
+/**
+ * @brief helper function of scanner.
+ * @param s pointer to the Scanner object.
+ * @returns character just next to the currently pointed
+ * character by the scanner pointer pos if file is not en
+ * -ded, otherwise '\0'.
+ */
 static char peek_next(Scanner *s) {
     return ((s->pos + 1) < s->size) ? s->buffer[s->pos + 1] : '\0';
 }
 
+/**
+ * @brief helper function of scanner
+ * @param s pointer to the Scanner object
+ * @returns character currently pointed by the scanner pointer.
+ * @post moves scanner pointer by 1 position ahead.
+ */
 static char advance(Scanner *s) {
     char c = s->buffer[s->pos++];
     if(c == '\n') s->line++;
@@ -66,6 +137,12 @@ static char advance(Scanner *s) {
     return c;
 }
 
+/**
+ * @brief helper function of scanner.
+ * @param s pointer to the Scanner object.
+ * @returns true if scanner pointer has reached the end of buffer,
+ * otherwise false.
+ */
 static bool at_end(Scanner *s) {
     return s->pos >= s->size;
 }

@@ -1,6 +1,5 @@
 #include "token.h"
 
-/* token.c, or a small addition to keyword.c/wherever fits your layout */
 static const char *token_type_names[] = {
     [TOKEN_CLASS] = "CLASS", [TOKEN_IF] = "IF", [TOKEN_THEN] = "THEN",
     [TOKEN_ELSE] = "ELSE", [TOKEN_FI] = "FI", [TOKEN_WHILE] = "WHILE",
