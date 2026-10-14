@@ -85,17 +85,24 @@ Debugging: build with `-g -O0` (without `-static`) and use `gdb` or `valgrind`.
 
 ```text
 cool-language-compiler/
-│
 ├── build
+│   ├── coolc
+│   ├── coolc_debug
 │   └── lexer
 ├── compile.sh
+├── debug.sh
 ├── docs
-│   ├── interntables.pdf
-│   ├── lexer_token_keyword.pdf
-│   └── tables.pdf
+│   ├── lexer
+│   │   ├── interntables.pdf
+│   │   ├── lexer_token_keyword.pdf
+│   │   └── tables.pdf
+│   └── parser
+│       ├── grammar_rules.pdf
+│       └── parser_implementation_tradeoffs_and_decisions.pdf
 ├── include
 │   ├── backend
 │   ├── common
+│   │   ├── dynarray.h
 │   │   ├── internTables.h
 │   │   ├── table.h
 │   │   └── utils.h
@@ -106,16 +113,19 @@ cool-language-compiler/
 │   │   │   ├── token.h
 │   │   │   └── tokenlist.h
 │   │   ├── parser
+│   │   │   ├── ast.h
+│   │   │   ├── parser.h
+│   │   │   └── syntax_error.h
 │   │   └── semant
 │   └── ir
 ├── MAKEFILE
-├── output
 ├── README.md
 ├── src
 │   ├── backend
 │   │   ├── codegen
 │   │   └── optimizer
 │   ├── common
+│   │   ├── dynarray.c
 │   │   ├── internTables.c
 │   │   ├── table.c
 │   │   └── utils.c
@@ -126,6 +136,9 @@ cool-language-compiler/
 │   │   │   ├── token.c
 │   │   │   └── tokenlist.c
 │   │   ├── parser
+│   │   │   ├── ast.c
+│   │   │   ├── parser.c
+│   │   │   └── syntax_error.c
 │   │   └── semant
 │   ├── ir
 │   └── main.c
@@ -138,7 +151,41 @@ cool-language-compiler/
         │   └── inputs
         │       └── test_lexer.cl
         ├── parser
+        │   ├── expected
+        │   │   ├── test1
+        │   │   ├── test10
+        │   │   ├── test11
+        │   │   ├── test2
+        │   │   ├── test3
+        │   │   ├── test4
+        │   │   ├── test5
+        │   │   ├── test6
+        │   │   ├── test7
+        │   │   ├── test8
+        │   │   └── test9
+        │   ├── inputs
+        │   │   ├── armstrong_num.cl
+        │   │   ├── class_test.cl
+        │   │   ├── test10.cl
+        │   │   ├── test11.cl
+        │   │   ├── test12.cl
+        │   │   ├── test1.cl
+        │   │   ├── test2.cl
+        │   │   ├── test3.cl
+        │   │   ├── test4.cl
+        │   │   ├── test5.cl
+        │   │   ├── test6.cl
+        │   │   ├── test7.cl
+        │   │   ├── test8.cl
+        │   │   └── test9.cl
+        │   └── outputs
+        │       ├── armstrong_num_build
+        │       ├── test1
+        │       ├── test2
+        │       ├── test3
+        │       └── test4
         └── semant
+
 
 ```
 
