@@ -7,7 +7,7 @@ Pipeline: `source (.cl) → Lexer → Parser → Semantic Analysis → IR → Op
 ## Status
 
 - [x] Lexer
-- [ ] Parser
+- [x] Parser
 - [ ] Semantic analysis
 - [ ] IR
 - [ ] Optimizer
@@ -18,6 +18,10 @@ Pipeline: `source (.cl) → Lexer → Parser → Semantic Analysis → IR → Op
 - **Lexer** — full COOL token set, case-insensitive keywords, maximal-munch identifiers,
   nested block comments, string escapes, and non-fatal categorized error reporting.
   See `docs/tables.pdf`, `docs/internTables.pdf`, `docs/lexer_token_keyword.pdf` for design details.
+
+- **Parser** — hand-written LL(1) recursive descent parser producing an AST, with precedence and
+  associativity encoded in the call structure, and panic-mode error recovery so one run reports
+  every syntax error. See `docs/parser/` for the grammar and the design tradeoffs.
 
 ## Requirements
 
@@ -36,18 +40,47 @@ chmod +x compile.sh
 ## Usage
 
 ```bash
-./build/lexer <path-to-source.cl>
+./build/coolc [--tokens] <path-to-source.cl>
 ```
 
-Example:
+- Lexical errors are printed first. If there are any, parsing is skipped.
+- Otherwise the source is parsed, and any syntax errors are reported.
+- If the program is valid, the AST is printed to stdout.
+- `--tokens` additionally dumps the token stream as `#<line>  <TYPE>  <text>`.
+- Exit status: `0` if the program is valid, `1` on any lexical or syntax error.
+  Errors go to stderr and the tree goes to stdout, so `./build/coolc f.cl > tree.txt` captures only the tree.
+
+Example input:
+
+```cool
+class Main inherits IO {
+    x : Int <- 5;
+    main() : Object { out_int(x) };
+};
+```
+
+Output:
+
+```text
+PROGRAM #1
+  CLASS Main inherits IO #1
+    ATTR x : Int #2
+      INT_CONST 5 #2
+    METHOD main : Object #3
+      DISPATCH out_int (self) #3
+        OBJECT_ID x #3
+```
+
+## Testing
+
+Test inputs live in `tests/frontend/<phase>/inputs/`, with expected output in `expected/`.
+Run the parser tests with:
 
 ```bash
-./build/lexer tests/frontend/lexer/inputs/test_lexer.cl
+./build/coolc tests/frontend/parser/*.cl 
 ```
 
-Prints any lexical errors, then every recognized token as `#<line>  <TYPE>  <text>`. Exits `0` if
-no lexical errors were found, `1` otherwise.
-
+Debugging: build with `-g -O0` (without `-static`) and use `gdb` or `valgrind`.
 ## 📁 Repository Structure
 
 ```text
@@ -111,9 +144,14 @@ cool-language-compiler/
 
 ## Documentation
 
-Design rationale for each phase lives in `docs/`, one document (or set) per phase, added as that
-phase is built. This README stays a short index — build/usage instructions and a feature/status
-summary, see `docs/` for depth.
+- Lexer: `docs/lexer/tables.pdf`, `docs/lexer/interntables.pdf`, `docs/lexer/lexer_token_keyword.pdf`
+- Parser: `docs/parser/grammar_rules.pdf`, `docs/parser/parser_implementation_tradeoffs_and_decisions.pdf`
+
+## Known limitations
+
+- No cap on expression nesting depth: extremely deeply nested input (hundreds of thousands of
+  levels) overflows the stack. A nesting limit with a proper error message is planned.
+- The parser has not yet been checked against COOL's reference compiler on every edge case.
 
 ## Author
 onbatwork1308-hub
