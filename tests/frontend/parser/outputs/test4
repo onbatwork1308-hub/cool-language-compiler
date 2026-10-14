@@ -1,0 +1,17 @@
+PROGRAM #1
+  CLASS Main #1
+    METHOD classify : String #2
+      FORMAL x : Int #2
+      LET result : String #3
+        STR_CONST "unknown" #3
+        BLOCK #3
+          CASE #4
+            OBJECT_ID x #4
+            CASE_BRANCH n : Int #5
+              IF #5
+                BINOP = #5
+                  OBJECT_ID n #5
+                  INT_CONST 0 #5
+                STR_CONST "zero" #5
+                STR_CONST "nonzero" #5
+          OBJECT_ID result #7

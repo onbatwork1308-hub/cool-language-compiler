@@ -1,0 +1,3 @@
+syntax error at line 2: expected expression but found SEMICOLON
+syntax error at line 3: expected expression but found SEMICOLON
+syntax error at line 4: expected TYPE_ID but found SEMICOLON

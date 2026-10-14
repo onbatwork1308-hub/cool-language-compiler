@@ -1,0 +1,9 @@
+PROGRAM #1
+  CLASS Main #1
+    METHOD f : Object #2
+      STATIC_DISPATCH @Object.copy #2
+        DISPATCH c #2
+          DISPATCH b #2
+            OBJECT_ID a #2
+          INT_CONST 1 #2
+          INT_CONST 2 #2

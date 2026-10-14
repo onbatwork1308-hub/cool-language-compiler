@@ -1,0 +1,368 @@
+*** Token ***
+
+#1    CLASS        class
+#1    TYPE_ID      Main
+#1    LBRACE      
+#4    OBJECT_ID    power
+#4    LPAREN      
+#4    OBJECT_ID    base
+#4    COLON       
+#4    TYPE_ID      Int
+#4    COMMA       
+#4    OBJECT_ID    exp
+#4    COLON       
+#4    TYPE_ID      Int
+#4    RPAREN      
+#4    COLON       
+#4    TYPE_ID      Int
+#4    LBRACE      
+#5    IF           if
+#5    OBJECT_ID    exp
+#5    EQ          
+#5    INT_CONST    0
+#5    THEN         then
+#6    INT_CONST    1
+#7    ELSE         else
+#8    OBJECT_ID    base
+#8    MUL         
+#8    OBJECT_ID    power
+#8    LPAREN      
+#8    OBJECT_ID    base
+#8    COMMA       
+#8    OBJECT_ID    exp
+#8    MINUS       
+#8    INT_CONST    1
+#8    RPAREN      
+#9    FI           fi
+#10   RBRACE      
+#10   SEMICOLON   
+#13   OBJECT_ID    count_digits
+#13   LPAREN      
+#13   OBJECT_ID    n
+#13   COLON       
+#13   TYPE_ID      Int
+#13   RPAREN      
+#13   COLON       
+#13   TYPE_ID      Int
+#13   LBRACE      
+#14   IF           if
+#14   OBJECT_ID    n
+#14   EQ          
+#14   INT_CONST    0
+#14   THEN         then
+#15   INT_CONST    1
+#16   ELSE         else
+#16   LBRACE      
+#17   LET          let
+#17   OBJECT_ID    temp
+#17   COLON       
+#17   TYPE_ID      Int
+#17   ASSIGN      
+#17   OBJECT_ID    n
+#17   COMMA       
+#18   OBJECT_ID    count
+#18   COLON       
+#18   TYPE_ID      Int
+#18   ASSIGN      
+#18   INT_CONST    0
+#19   IN           in
+#19   LBRACE      
+#20   WHILE        while
+#20   OBJECT_ID    temp
+#20   LT          
+#20   INT_CONST    0
+#20   LOOP         loop
+#20   LBRACE      
+#21   OBJECT_ID    temp
+#21   ASSIGN      
+#21   OBJECT_ID    temp
+#21   DIVIDE      
+#21   INT_CONST    10
+#21   SEMICOLON   
+#22   OBJECT_ID    count
+#22   ASSIGN      
+#22   OBJECT_ID    count
+#22   PLUS        
+#22   INT_CONST    1
+#22   SEMICOLON   
+#23   RBRACE      
+#23   POOL         pool
+#23   SEMICOLON   
+#25   OBJECT_ID    count
+#25   SEMICOLON   
+#26   RBRACE      
+#26   SEMICOLON   
+#27   RBRACE      
+#28   FI           fi
+#29   RBRACE      
+#29   SEMICOLON   
+#30   OBJECT_ID    is_armstrong
+#30   LPAREN      
+#30   OBJECT_ID    n
+#30   COLON       
+#30   TYPE_ID      Int
+#30   RPAREN      
+#30   COLON       
+#30   TYPE_ID      Bool
+#30   LBRACE      
+#31   IF           if
+#31   OBJECT_ID    n
+#31   LT          
+#31   INT_CONST    0
+#31   THEN         then
+#32   FALSE        false
+#33   ELSE         else
+#33   LBRACE      
+#34   LET          let
+#34   OBJECT_ID    temp
+#34   COLON       
+#34   TYPE_ID      Int
+#34   ASSIGN      
+#34   OBJECT_ID    n
+#34   COMMA       
+#35   OBJECT_ID    sum
+#35   COLON       
+#35   TYPE_ID      Int
+#35   ASSIGN      
+#35   INT_CONST    0
+#35   COMMA       
+#36   OBJECT_ID    digits
+#36   COLON       
+#36   TYPE_ID      Int
+#36   ASSIGN      
+#36   OBJECT_ID    count_digits
+#36   LPAREN      
+#36   OBJECT_ID    n
+#36   RPAREN      
+#36   COMMA       
+#37   OBJECT_ID    digit
+#37   COLON       
+#37   TYPE_ID      Int
+#37   ASSIGN      
+#37   INT_CONST    0
+#38   IN           in
+#38   LBRACE      
+#39   WHILE        while
+#39   OBJECT_ID    temp
+#39   LT          
+#39   INT_CONST    0
+#39   LOOP         loop
+#39   LBRACE      
+#40   OBJECT_ID    digit
+#40   ASSIGN      
+#40   OBJECT_ID    temp
+#40   MINUS       
+#40   LPAREN      
+#40   OBJECT_ID    temp
+#40   DIVIDE      
+#40   INT_CONST    10
+#40   RPAREN      
+#40   MUL         
+#40   INT_CONST    10
+#40   SEMICOLON   
+#41   OBJECT_ID    sum
+#41   ASSIGN      
+#41   OBJECT_ID    sum
+#41   PLUS        
+#41   OBJECT_ID    power
+#41   LPAREN      
+#41   OBJECT_ID    digit
+#41   COMMA       
+#41   OBJECT_ID    digits
+#41   RPAREN      
+#41   SEMICOLON   
+#42   OBJECT_ID    temp
+#42   ASSIGN      
+#42   OBJECT_ID    temp
+#42   DIVIDE      
+#42   INT_CONST    10
+#42   SEMICOLON   
+#43   RBRACE      
+#43   POOL         pool
+#43   SEMICOLON   
+#45   IF           if
+#45   OBJECT_ID    n
+#45   EQ          
+#45   INT_CONST    0
+#45   THEN         then
+#46   TRUE         true
+#47   ELSE         else
+#48   OBJECT_ID    sum
+#48   EQ          
+#48   OBJECT_ID    n
+#49   FI           fi
+#49   SEMICOLON   
+#50   RBRACE      
+#50   SEMICOLON   
+#51   RBRACE      
+#52   FI           fi
+#53   RBRACE      
+#53   SEMICOLON   
+#55   OBJECT_ID    main
+#55   LPAREN      
+#55   RPAREN      
+#55   COLON       
+#55   TYPE_ID      Object
+#55   LBRACE      
+#56   LET          let
+#56   OBJECT_ID    n
+#56   COLON       
+#56   TYPE_ID      Int
+#56   ASSIGN      
+#56   LPAREN      
+#56   NEW          new
+#56   TYPE_ID      IO
+#56   RPAREN      
+#56   DOT         
+#56   OBJECT_ID    in_int
+#56   LPAREN      
+#56   RPAREN      
+#56   IN           in
+#56   LBRACE      
+#57   IF           if
+#57   OBJECT_ID    is_armstrong
+#57   LPAREN      
+#57   OBJECT_ID    n
+#57   RPAREN      
+#57   THEN         then
+#58   LPAREN      
+#58   NEW          new
+#58   TYPE_ID      IO
+#58   RPAREN      
+#58   DOT         
+#58   OBJECT_ID    out_string
+#58   LPAREN      
+#58   STR_CONST    Armstrong number
+
+#58   RPAREN      
+#59   ELSE         else
+#60   LPAREN      
+#60   NEW          new
+#60   TYPE_ID      IO
+#60   RPAREN      
+#60   DOT         
+#60   OBJECT_ID    out_string
+#60   LPAREN      
+#60   STR_CONST    Not an Armstrong number
+
+#60   RPAREN      
+#61   FI           fi
+#61   SEMICOLON   
+#62   RBRACE      
+#63   RBRACE      
+#63   SEMICOLON   
+#65   RBRACE      
+#65   SEMICOLON   
+#66   EOF         
+
+
+
+*** AST ***
+
+PROGRAM #1
+  CLASS Main #1
+    METHOD power : Int #4
+      FORMAL base : Int #4
+      FORMAL exp : Int #4
+      IF #5
+        BINOP = #5
+          OBJECT_ID exp #5
+          INT_CONST 0 #5
+        INT_CONST 1 #6
+        BINOP * #8
+          OBJECT_ID base #8
+          DISPATCH power (self) #8
+            OBJECT_ID base #8
+            BINOP - #8
+              OBJECT_ID exp #8
+              INT_CONST 1 #8
+    METHOD count_digits : Int #13
+      FORMAL n : Int #13
+      IF #14
+        BINOP = #14
+          OBJECT_ID n #14
+          INT_CONST 0 #14
+        INT_CONST 1 #15
+        BLOCK #16
+          LET temp : Int #17
+            OBJECT_ID n #17
+            LET count : Int #18
+              INT_CONST 0 #18
+              BLOCK #19
+                WHILE #20
+                  BINOP < #20
+                    OBJECT_ID temp #20
+                    INT_CONST 0 #20
+                  BLOCK #20
+                    ASSIGN temp #21
+                      BINOP / #21
+                        OBJECT_ID temp #21
+                        INT_CONST 10 #21
+                    ASSIGN count #22
+                      BINOP + #22
+                        OBJECT_ID count #22
+                        INT_CONST 1 #22
+                OBJECT_ID count #25
+    METHOD is_armstrong : Bool #30
+      FORMAL n : Int #30
+      IF #31
+        BINOP < #31
+          OBJECT_ID n #31
+          INT_CONST 0 #31
+        BOOL_CONST false #32
+        BLOCK #33
+          LET temp : Int #34
+            OBJECT_ID n #34
+            LET sum : Int #35
+              INT_CONST 0 #35
+              LET digits : Int #36
+                DISPATCH count_digits (self) #36
+                  OBJECT_ID n #36
+                LET digit : Int #37
+                  INT_CONST 0 #37
+                  BLOCK #38
+                    WHILE #39
+                      BINOP < #39
+                        OBJECT_ID temp #39
+                        INT_CONST 0 #39
+                      BLOCK #39
+                        ASSIGN digit #40
+                          BINOP - #40
+                            OBJECT_ID temp #40
+                            BINOP * #40
+                              BINOP / #40
+                                OBJECT_ID temp #40
+                                INT_CONST 10 #40
+                              INT_CONST 10 #40
+                        ASSIGN sum #41
+                          BINOP + #41
+                            OBJECT_ID sum #41
+                            DISPATCH power (self) #41
+                              OBJECT_ID digit #41
+                              OBJECT_ID digits #41
+                        ASSIGN temp #42
+                          BINOP / #42
+                            OBJECT_ID temp #42
+                            INT_CONST 10 #42
+                    IF #45
+                      BINOP = #45
+                        OBJECT_ID n #45
+                        INT_CONST 0 #45
+                      BOOL_CONST true #46
+                      BINOP = #48
+                        OBJECT_ID sum #48
+                        OBJECT_ID n #48
+    METHOD main : Object #55
+      LET n : Int #56
+        DISPATCH in_int #56
+          NEW IO #56
+        BLOCK #56
+          IF #57
+            DISPATCH is_armstrong (self) #57
+              OBJECT_ID n #57
+            DISPATCH out_string #58
+              NEW IO #58
+              STR_CONST "Armstrong number\n" #58
+            DISPATCH out_string #60
+              NEW IO #60
+              STR_CONST "Not an Armstrong number\n" #60

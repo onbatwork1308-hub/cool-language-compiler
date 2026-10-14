@@ -1,0 +1,14 @@
+PROGRAM #1
+  CLASS Main #1
+    METHOD f : Int #2
+      BINOP + #2
+        INT_CONST 2 #2
+        BINOP * #2
+          INT_CONST 3 #2
+          INT_CONST 4 #2
+    METHOD g : Int #3
+      BINOP - #3
+        BINOP - #3
+          INT_CONST 10 #3
+          INT_CONST 2 #3
+        INT_CONST 3 #3

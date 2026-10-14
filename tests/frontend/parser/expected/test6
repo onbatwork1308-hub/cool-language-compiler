@@ -1,0 +1,7 @@
+PROGRAM #1
+  CLASS Main #1
+    METHOD f : Int #2
+      ASSIGN a #2
+        ASSIGN b #2
+          INT_CONST 3 #2
+          

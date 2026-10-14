@@ -3,10 +3,13 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <stdbool.h>
+#include "ast.h"
 #include "token.h"
-#include "internTables.h"
 #include "lexer.h"
+#include "parser.h"
 #include "tokenlist.h"
+#include "syntax_error.h"
+#include "internTables.h"
 
 static const char *lex_error_messages[] = {
     [LEX_ERR_ILLEGAL_CHAR]        = "unexpected character",
@@ -72,13 +75,35 @@ int main(int argc, char *argv[]) {
     TokenList *tokens = lex(buffer, size, it);
     // printf("DEBUG: token count = %d\n", tokens->count);
 
-    bool had_error = report_lex_error(tokens);
+    if(report_lex_error(tokens)) {
+        tokenlist_destroy(tokens);
+        internTables_destroy(it);
+        return 1;
+    }
+
+    printf("*** Token ***\n\n");
     tokenlist_print(tokens);
+    printf("\n\n\n");
     free(buffer);
 
+    SyntaxErrorList *serrs = syntax_error_list_create();
+    ASTNode *ast = parse(tokens, serrs);
+
+    if(syntax_error_list_report(serrs, stderr)) {
+        ast_destroy(ast);
+        syntax_error_list_destroy(serrs);
+        tokenlist_destroy(tokens);
+        internTables_destroy(it);
+        return 1;
+    }
+
+    //printf("*** AST ***\n\n");
+    ast_print(ast, stdout);
     /*Destruction phase*/
     tokenlist_destroy(tokens);
     internTables_destroy(it);
+    ast_destroy(ast);
+    syntax_error_list_destroy(serrs);
 
-    return had_error ? 1 : 0;
+    return 0;
 }

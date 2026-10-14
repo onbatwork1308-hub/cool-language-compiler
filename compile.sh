@@ -4,7 +4,7 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BUILD_DIR="$ROOT/build"
-BIN="$BUILD_DIR/lexer"
+BIN="$BUILD_DIR/coolc"
 
 mkdir -p "$BUILD_DIR"
 
@@ -15,16 +15,21 @@ CFLAGS="-std=c11 -D_POSIX_C_SOURCE=200809L -Wall -Wextra -g -static"
 INCLUDES=(
     -I"$ROOT/include/common"
     -I"$ROOT/include/frontend/lexer"
+    -I"$ROOT/include/frontend/parser"
 )
 
 SOURCES=(
     "$ROOT/src/common/table.c"
     "$ROOT/src/common/internTables.c"    # capital T — matches your actual filename
     "$ROOT/src/common/utils.c"
+    "$ROOT/src/common/dynarray.c"
     "$ROOT/src/frontend/lexer/token.c"
     "$ROOT/src/frontend/lexer/tokenlist.c"
     "$ROOT/src/frontend/lexer/keyword.c"
     "$ROOT/src/frontend/lexer/lexer.c"
+    "$ROOT/src/frontend/parser/ast.c"
+    "$ROOT/src/frontend/parser/syntax_error.c"
+    "$ROOT/src/frontend/parser/parser.c"
 
     "$ROOT/src/main.c"
 )

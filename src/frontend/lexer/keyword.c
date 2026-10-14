@@ -27,6 +27,11 @@ static const KeywordEntry keywords[] = {
 
 TokenType keyword_lookup(const char *text, int len) {
     
+    if (len == 4 && text[0] == 't' && strncasecmp(text + 1, "rue", 3) == 0)
+        return TOKEN_TRUE;
+    if (len == 5 && text[0] == 'f' && strncasecmp(text + 1, "alse", 4) == 0)
+        return TOKEN_FALSE;
+        
     for(size_t i = 0; i < NUM_KEYWORDS; i++) {
         if((int)strlen(keywords[i].text) == len &&
             strncasecmp(keywords[i].text, text, len) == 0) {

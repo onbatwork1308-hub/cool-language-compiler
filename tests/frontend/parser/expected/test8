@@ -1,0 +1,15 @@
+PROGRAM #1
+  CLASS Main #1
+    METHOD f : Bool #2
+      UNOP not #2
+        BINOP < #2
+          OBJECT_ID a #2
+          OBJECT_ID b #2
+    METHOD g : Int #3
+      UNOP ~ #3
+        UNOP ~ #3
+          INT_CONST 5 #3
+    METHOD h : Int #4
+      UNOP ~ #4
+        DISPATCH y #4
+          OBJECT_ID x #4

@@ -1,0 +1,9 @@
+PROGRAM #1
+  CLASS Main inherits IO #1
+    ATTR x : Int #2
+      INT_CONST 5 #2
+    ATTR y : Int #3
+      NO_EXPR #3
+    METHOD main : Object #4
+      DISPATCH out_int (self) #4
+        OBJECT_ID x #4

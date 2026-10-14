@@ -18,9 +18,8 @@ static const char *token_type_names[] = {
     [TOKEN_ASSIGN] = "ASSIGN", [TOKEN_EQ] = "EQ", [TOKEN_LT] = "LT",
     [TOKEN_LEQ] = "LEQ",
 
-    [TOKEN_INT_CONST] = "INT_CONST", [TOKEN_BOOL_CONST] = "BOOL_CONST",
-    [TOKEN_STR_CONST] = "STR_CONST", [TOKEN_TYPE_ID] = "TYPE_ID",
-    [TOKEN_OBJECT_ID] = "OBJECT_ID",
+    [TOKEN_INT_CONST] = "INT_CONST", [TOKEN_STR_CONST] = "STR_CONST", 
+    [TOKEN_TYPE_ID] = "TYPE_ID", [TOKEN_OBJECT_ID] = "OBJECT_ID",
 
     [TOKEN_ERROR] = "ERROR", [TOKEN_EOF] = "EOF"
 };
