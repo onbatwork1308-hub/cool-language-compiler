@@ -40,7 +40,7 @@ chmod +x compile.sh
 ## Usage
 
 ```bash
-./build/coolc [--tokens] <path-to-source.cl>
+./build/coolc  <path-to-source.cl>
 ```
 
 - Lexical errors are printed first. If there are any, parsing is skipped.
@@ -93,12 +93,7 @@ cool-language-compiler/
 ├── debug.sh
 ├── docs
 │   ├── lexer
-│   │   ├── interntables.pdf
-│   │   ├── lexer_token_keyword.pdf
-│   │   └── tables.pdf
-│   └── parser
-│       ├── grammar_rules.pdf
-│       └── parser_implementation_tradeoffs_and_decisions.pdf
+│   └── parserf
 ├── include
 │   ├── backend
 │   ├── common
@@ -149,41 +144,10 @@ cool-language-compiler/
         ├── lexer
         │   ├── expected
         │   └── inputs
-        │       └── test_lexer.cl
         ├── parser
         │   ├── expected
-        │   │   ├── test1
-        │   │   ├── test10
-        │   │   ├── test11
-        │   │   ├── test2
-        │   │   ├── test3
-        │   │   ├── test4
-        │   │   ├── test5
-        │   │   ├── test6
-        │   │   ├── test7
-        │   │   ├── test8
-        │   │   └── test9
         │   ├── inputs
-        │   │   ├── armstrong_num.cl
-        │   │   ├── class_test.cl
-        │   │   ├── test10.cl
-        │   │   ├── test11.cl
-        │   │   ├── test12.cl
-        │   │   ├── test1.cl
-        │   │   ├── test2.cl
-        │   │   ├── test3.cl
-        │   │   ├── test4.cl
-        │   │   ├── test5.cl
-        │   │   ├── test6.cl
-        │   │   ├── test7.cl
-        │   │   ├── test8.cl
-        │   │   └── test9.cl
         │   └── outputs
-        │       ├── armstrong_num_build
-        │       ├── test1
-        │       ├── test2
-        │       ├── test3
-        │       └── test4
         └── semant
 
 
